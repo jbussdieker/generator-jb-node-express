@@ -52,12 +52,10 @@ module.exports = class extends Generator {
   install() {
     const packages = ['express', 'body-parser', 'config'];
 
-    if (this.options.database) {
-      packages.push('knex');
-      packages.push('sqlite3');
-      packages.push('pg');
-      packages.push('bookshelf');
-    }
+    packages.push('knex');
+    packages.push('sqlite3');
+    packages.push('pg');
+    packages.push('bookshelf');
 
     this.npmInstall(packages);
     this.npmInstall(['mocha', 'chai', 'chai-http'], { 'save-dev': true })
