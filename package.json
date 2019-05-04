@@ -6,6 +6,12 @@
   "homepage": "https://github.com/jbussdieker/generator-jb-node-express",
   "files": [
     "app",
+    "controller",
+    "migration",
+    "model",
+    "route",
+    "scaffold",
+    "seed",
     "server"
   ],
   "scripts": {
@@ -45,6 +51,8 @@
   },
   "dependencies": {
     "generator-jb-node": "^1.0.1",
+    "pascal-case": "^2.0.1",
+    "pluralize": "^7.0.0",
     "yeoman-generator": "^3.2.0"
   },
   "devDependencies": {

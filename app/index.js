@@ -9,8 +9,4 @@ module.exports = class extends Generator {
       name: this.options.name
     });
   }
-
-  install() {
-    this.npmInstall('express');
-  }
 };
