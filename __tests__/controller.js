@@ -2,6 +2,7 @@
 const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
+const fs = require('fs');
 
 const testOptions = {
   name: 'foo'
@@ -29,6 +30,14 @@ describe('jbb-node-express:controller', () => {
 
     it('creates controller', () => {
       assert.file(['controllers/foos.js']);
+    });
+
+    it('matches fixture', () => {
+      const fixture = fs.readFileSync(
+        path.join(__dirname, './fixtures/controller.js'),
+        'utf8'
+      );
+      assert.fileContent('controllers/foos.js', fixture);
     });
   });
 });

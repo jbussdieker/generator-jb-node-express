@@ -35,7 +35,10 @@
     "url": "https://github.com/jbussdieker/generator-jb-node-express/issues"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "fixtures/"
+    ]
   },
   "eslintConfig": {
     "extends": [
