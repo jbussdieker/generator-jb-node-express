@@ -12,7 +12,7 @@
     "route",
     "scaffold",
     "seed",
-    "server"
+    "boilerplate"
   ],
   "scripts": {
     "test": "jest --coverage",

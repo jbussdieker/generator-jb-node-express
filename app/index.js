@@ -5,7 +5,7 @@ module.exports = class extends Generator {
     this.composeWith(require.resolve('generator-jb-node/app'), {
       name: this.options.name
     });
-    this.composeWith(require.resolve('../server'), {
+    this.composeWith(require.resolve('../boilerplate'), {
       name: this.options.name
     });
   }
