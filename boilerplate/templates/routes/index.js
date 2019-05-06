@@ -4,8 +4,8 @@ const router = express.Router();
 const config = require('config');
 const routes = config.get('routes');
 
-for (var route in routes) {
+Object.keys(routes).forEach((route) => {
   router.use(`/${route}`, require(`./${route}`));
-}
+})
 
 module.exports = router;

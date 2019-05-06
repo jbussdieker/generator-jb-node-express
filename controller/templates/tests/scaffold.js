@@ -5,21 +5,21 @@ const <%= modelName %> = require('../../models/<%= singularName %>')
 
 describe("<%= modelName %>", () => {
   var agent
-  var test_<%= singularName %>
+  var test<%= modelName %>
   var subject
 
   before(function(done) {
     <%= modelName %>.where('id', '!=', 0).destroy().catch(() => {})
     agent = chai.request.agent(app)
     <%= modelName %>.forge({someattr: "foo"}).save().then((<%= singularName %>) => {
-      test_<%= singularName %> = <%= singularName %>
+      test<%= modelName %> = <%= singularName %>
       done()
     })
   })
 
   describe("GET /<%= pluralName %>", () => {
     before(function(done) {
-      agent.get('/<%= pluralName %>').end((err, res) => {
+      agent.get('/<%= pluralName %>').end((_, res) => {
         subject = res
         done()
       })
@@ -40,7 +40,7 @@ describe("<%= modelName %>", () => {
 
   describe("POST /<%= pluralName %>", () => {
     before(function(done) {
-      agent.post('/<%= pluralName %>').send({someattr: 'foo'}).end((err, res) => {
+      agent.post('/<%= pluralName %>').send({someattr: 'foo'}).end((_, res) => {
         subject = res
         done()
       })
@@ -65,7 +65,7 @@ describe("<%= modelName %>", () => {
 
   describe("GET /<%= pluralName %>/:id", () => {
     before(function(done) {
-      agent.get(`/<%= pluralName %>/${test_<%= singularName %>.id}`).end((err, res) => {
+      agent.get(`/<%= pluralName %>/${test<%= modelName %>.id}`).end((_, res) => {
         subject = res
         done()
       })
@@ -80,7 +80,7 @@ describe("<%= modelName %>", () => {
     })
 
     it("should return the someattr", () => {
-      subject.body.someattr.should.eql(test_<%= singularName %>.attributes.someattr)
+      subject.body.someattr.should.eql(test<%= modelName %>.attributes.someattr)
     })
 
     it("should return all the <%= singularName %> keys", () => {
@@ -90,7 +90,7 @@ describe("<%= modelName %>", () => {
 
   describe("POST /<%= pluralName %>/:id", () => {
     before(function(done) {
-      agent.post(`/<%= pluralName %>/${test_<%= singularName %>.id}`).send({someattr: "barber"}).end((err, res) => {
+      agent.post(`/<%= pluralName %>/${test<%= modelName %>.id}`).send({someattr: "barber"}).end((_, res) => {
         subject = res
         done()
       })
@@ -115,7 +115,7 @@ describe("<%= modelName %>", () => {
 
   describe("DELETE /<%= pluralName %>/:id", () => {
     before(function(done) {
-      agent.delete(`/<%= pluralName %>/${test_<%= singularName %>.id}`).end((err, res) => {
+      agent.delete(`/<%= pluralName %>/${test<%= modelName %>.id}`).end((_, res) => {
         subject = res
         done()
       })

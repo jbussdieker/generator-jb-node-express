@@ -13,12 +13,27 @@ module.exports = class extends Generator {
         pretest: 'eslint . --fix'
       },
       eslintConfig: {
-        extends: 'eslint:recommended',
+        extends: [
+          "xo-space/esnext",
+          "prettier"
+        ],
         env: {
           es6: true,
           node: true,
           mocha: true
-        }
+        },
+        rules: {
+          "prettier/prettier": [
+            "error",
+            {
+              singleQuote: true,
+              printWidth: 90
+            }
+          ]
+        },
+        plugins: [
+          "prettier"
+        ]
       }
     });
 
@@ -65,6 +80,14 @@ module.exports = class extends Generator {
     packages.push('bookshelf');
 
     this.npmInstall(packages);
-    this.npmInstall(['mocha', 'chai', 'chai-http', 'eslint'], { 'save-dev': true });
+
+    const devPackages = ['mocha', 'chai', 'chai-http', 'eslint']
+
+    devPackages.push('eslint-config-prettier');
+    devPackages.push('eslint-config-xo-space');
+    devPackages.push('eslint-plugin-prettier');
+    devPackages.push('prettier');
+
+    this.npmInstall(devPackages, { 'save-dev': true });
   }
 };

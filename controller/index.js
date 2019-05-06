@@ -1,6 +1,6 @@
 const Generator = require('yeoman-generator');
 const pluralize = require('pluralize');
-const pascalCase = require('pascal-case');
+const changeCase = require('change-case');
 
 module.exports = class extends Generator {
   writing() {
@@ -11,7 +11,7 @@ module.exports = class extends Generator {
       {
         singularName: pluralize.singular(this.options.name),
         pluralName: pluralize.plural(this.options.name),
-        modelName: pascalCase(pluralize.singular(this.options.name))
+        modelName: changeCase.pascal(pluralize.singular(this.options.name))
       }
     );
     this.fs.copyTpl(
@@ -20,7 +20,7 @@ module.exports = class extends Generator {
       {
         singularName: pluralize.singular(this.options.name),
         pluralName: pluralize.plural(this.options.name),
-        modelName: pascalCase(pluralize.singular(this.options.name))
+        modelName: changeCase.pascal(pluralize.singular(this.options.name))
       }
     );
   }
