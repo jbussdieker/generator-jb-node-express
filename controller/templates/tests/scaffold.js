@@ -11,7 +11,7 @@ describe("<%= modelName %>", () => {
   before(function(done) {
     <%= modelName %>.where('id', '!=', 0).destroy().catch(() => {})
     agent = chai.request.agent(app)
-    <%= modelName %>.forge({someattr: "foo"}).save().then((<%= singularName %>) => {
+    <%= modelName %>.forge(<%- JSON.stringify(mockAttributes) %>).save().then((<%= singularName %>) => {
       test<%= modelName %> = <%= singularName %>
       done()
     })
@@ -40,7 +40,7 @@ describe("<%= modelName %>", () => {
 
   describe("POST /<%= pluralName %>", () => {
     before(function(done) {
-      agent.post('/<%= pluralName %>').send({someattr: 'foo'}).end((_, res) => {
+      agent.post('/<%= pluralName %>').send(<%- JSON.stringify(mockAttributes) %>).end((_, res) => {
         subject = res
         done()
       })
@@ -54,12 +54,14 @@ describe("<%= modelName %>", () => {
       subject.body.should.be.an('object')
     })
 
-    it("should return the somattr", () => {
-      subject.body.someattr.should.eql("foo")
+<% for(var i=0; i < keys.length; i++) { -%>
+    it("should return the <%= keys[i] %>", () => {
+      subject.body.<%= keys[i] %>.should.eql(<%- JSON.stringify(mockAttributes[keys[i]]) %>)
     })
+<% } -%>
 
     it("should have all the <%= singularName %> keys", () => {
-      subject.body.should.have.all.keys(["id", "someattr"])
+      subject.body.should.have.all.keys(<%- JSON.stringify(["id", ...Object.keys(mockAttributes)]) %>)
     })
   })
 
@@ -79,18 +81,20 @@ describe("<%= modelName %>", () => {
       subject.body.should.be.an('object')
     })
 
-    it("should return the someattr", () => {
-      subject.body.someattr.should.eql(test<%= modelName %>.attributes.someattr)
+<% for(var i=0; i < keys.length; i++) { -%>
+    it("should return the <%= keys[i] %>", () => {
+      subject.body.<%= keys[i] %>.should.eql(<%- JSON.stringify(mockAttributes[keys[i]]) %>)
     })
+<% } -%>
 
-    it("should return all the <%= singularName %> keys", () => {
-      subject.body.should.have.all.keys(["id", "someattr"]);
+    it("should have all the <%= singularName %> keys", () => {
+      subject.body.should.have.all.keys(<%- JSON.stringify(["id", ...Object.keys(mockAttributes)]) %>)
     })
   })
 
   describe("POST /<%= pluralName %>/:id", () => {
     before(function(done) {
-      agent.post(`/<%= pluralName %>/${test<%= modelName %>.id}`).send({someattr: "barber"}).end((_, res) => {
+      agent.post(`/<%= pluralName %>/${test<%= modelName %>.id}`).send(<%- JSON.stringify(mockAttributesDelta) %>).end((_, res) => {
         subject = res
         done()
       })
@@ -104,12 +108,14 @@ describe("<%= modelName %>", () => {
       subject.body.should.be.an('object')
     })
 
-    it("should return the someattr", () => {
-      subject.body.someattr.should.eql("barber")
+<% for(var i=0; i < keys.length; i++) { -%>
+    it("should return the <%= keys[i] %>", () => {
+      subject.body.<%= keys[i] %>.should.eql(<%- JSON.stringify(mockAttributesDelta[keys[i]]) %>)
     })
+<% } -%>
 
-    it("should return all the <%= singularName %> keys", () => {
-      subject.body.should.have.all.keys(["id", "someattr"]);
+    it("should have all the <%= singularName %> keys", () => {
+      subject.body.should.have.all.keys(<%- JSON.stringify(["id", ...Object.keys(mockAttributes)]) %>)
     })
   })
 

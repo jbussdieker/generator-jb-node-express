@@ -3,7 +3,11 @@ exports.seed = function(knex, Promise) {
     knex('<%= tableName %>')
       .del()
       .then(function() {
-        return Promise.all([knex('<%= tableName %>').insert([{}])]);
+        return Promise.all([
+          knex('<%= tableName %>').insert([
+            <%- JSON.stringify(mockAttributes) %>
+          ])
+        ]);
       })
   ]);
 };

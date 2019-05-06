@@ -13,9 +13,9 @@ module.exports = {
   },
 
   create: function(req, res) {
-    var { someattr } = req.body
+    var { <%- Object.keys(attributes).join(", ") %> } = req.body
 
-    new <%= modelName %>({someattr: someattr}).save().then((<%= singularName %>) => {
+    new <%= modelName %>({<%- Object.keys(attributes).map(key => key+": "+key).join(", ") %>}).save().then((<%= singularName %>) => {
       res.status(201).json(<%= singularName %>)
     }).catch((err) => {
       res.status(500).json(err)
@@ -44,10 +44,10 @@ module.exports = {
 
   update: function(req, res) {
     var { id } = req.params
-    var { someattr } = req.body
+    var { <%- Object.keys(attributes).join(", ") %> } = req.body
 
     new <%= modelName %>().where({id: id}).fetch({require: true}).then((<%= singularName %>) => {
-      <%= singularName %>.set('someattr', someattr).save().then((<%= singularName %>) => {
+      <%= singularName %>.set({<%- Object.keys(attributes).map(key => key+": "+key).join(", ") %>}).save().then((<%= singularName %>) => {
         res.status(200).json(<%= singularName %>)
       }).catch((err) => {
         res.status(500).json(err)

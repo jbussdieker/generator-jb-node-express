@@ -4,11 +4,11 @@ module.exports = class extends Generator {
   default() {
     this.composeWith(require.resolve('../migration'), {
       name: this.options.name,
-      template: 'scaffold'
+      attributes: this.options.attributes
     });
     this.composeWith(require.resolve('../seed'), {
       name: this.options.name,
-      template: 'scaffold'
+      attributes: this.options.attributes
     });
     this.composeWith(require.resolve('../model'), {
       name: this.options.name
@@ -19,6 +19,7 @@ module.exports = class extends Generator {
     });
     this.composeWith(require.resolve('../controller'), {
       name: this.options.name,
+      attributes: this.options.attributes,
       template: 'scaffold'
     });
   }

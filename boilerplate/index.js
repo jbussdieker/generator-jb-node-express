@@ -13,27 +13,22 @@ module.exports = class extends Generator {
         pretest: 'eslint . --fix'
       },
       eslintConfig: {
-        extends: [
-          "xo-space/esnext",
-          "prettier"
-        ],
+        extends: ['xo-space/esnext', 'prettier'],
         env: {
           es6: true,
           node: true,
           mocha: true
         },
         rules: {
-          "prettier/prettier": [
-            "error",
+          'prettier/prettier': [
+            'error',
             {
               singleQuote: true,
               printWidth: 90
             }
           ]
         },
-        plugins: [
-          "prettier"
-        ]
+        plugins: ['prettier']
       }
     });
 
@@ -81,7 +76,7 @@ module.exports = class extends Generator {
 
     this.npmInstall(packages);
 
-    const devPackages = ['mocha', 'chai', 'chai-http', 'eslint']
+    const devPackages = ['mocha', 'chai', 'chai-http', 'eslint'];
 
     devPackages.push('eslint-config-prettier');
     devPackages.push('eslint-config-xo-space');

@@ -4,7 +4,8 @@ const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 
 const testOptions = {
-  name: 'foo'
+  name: 'foo',
+  attributes: 'title:string'
 };
 
 describe('jbb-node-express:scaffold', () => {

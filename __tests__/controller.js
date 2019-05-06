@@ -13,8 +13,22 @@ describe('jbb-node-express:controller', () => {
       return helpers.run(path.join(__dirname, '../controller')).withOptions(testOptions);
     });
 
-    it('creates controllers dir', () => {
-      assert.file(['controllers/']);
+    it('creates controller', () => {
+      assert.file(['controllers/foos.js']);
+    });
+  });
+
+  describe('scaffold', () => {
+    beforeEach(() => {
+      return helpers.run(path.join(__dirname, '../controller')).withOptions({
+        ...testOptions,
+        attributes: 'name:string,body:text,user_id:integer',
+        template: 'scaffold'
+      });
+    });
+
+    it('creates controller', () => {
+      assert.file(['controllers/foos.js']);
     });
   });
 });
