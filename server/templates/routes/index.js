@@ -4,7 +4,7 @@ const router = express.Router();
 const config = require('config');
 const routes = config.get('routes');
 
-for (route in routes) {
+for (var route in routes) {
   router.use(`/${route}`, require(`./${route}`));
 }
 
