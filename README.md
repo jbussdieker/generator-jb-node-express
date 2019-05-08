@@ -1,4 +1,5 @@
-# generator-jb-node-express
+# generator-jb-node-express [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+> NodeJS Express project generator
 
 ## Getting started
 
@@ -44,3 +45,17 @@ Scaffolds out a basic NodeJS Express project
     │   └── mymodels.js
     └── helper.js
 ```
+
+## License
+
+MIT © [Joshua Bussdieker](github.com/jbussdieker)
+
+
+[npm-image]: https://badge.fury.io/js/generator-jb-node-express.svg
+[npm-url]: https://npmjs.org/package/generator-jb-node-express
+[travis-image]: https://travis-ci.org/jbussdieker/generator-jb-node-express.svg?branch=master
+[travis-url]: https://travis-ci.org/jbussdieker/generator-jb-node-express
+[daviddm-image]: https://david-dm.org/jbussdieker/generator-jb-node-express.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/jbussdieker/generator-jb-node-express
+[coveralls-image]: https://coveralls.io/repos/jbussdieker/generator-jb-node-express/badge.svg
+[coveralls-url]: https://coveralls.io/r/jbussdieker/generator-jb-node-express
