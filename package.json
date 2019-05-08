@@ -1,6 +1,6 @@
 {
   "name": "generator-jb-node-express",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Generate a NodeJS Express project",
   "main": "index.js",
   "homepage": "https://github.com/jbussdieker/generator-jb-node-express#readme",
