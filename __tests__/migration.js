@@ -11,7 +11,9 @@ const testOptions = {
 describe('jbb-node-express:migration', () => {
   describe('normal', () => {
     beforeEach(() => {
-      return helpers.run(path.join(__dirname, '../migration')).withOptions(testOptions);
+      return helpers
+        .run(path.join(__dirname, '../generators/migration'))
+        .withOptions(testOptions);
     });
 
     it('creates the db/migrations dir', () => {
@@ -26,7 +28,7 @@ describe('jbb-node-express:migration', () => {
   describe('multiple runs', () => {
     beforeEach(() => {
       return helpers
-        .run(path.join(__dirname, '../migration'))
+        .run(path.join(__dirname, '../generators/migration'))
         .withOptions(testOptions)
         .on('ready', gen => {
           gen.fs.write(

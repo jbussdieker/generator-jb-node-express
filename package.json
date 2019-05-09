@@ -5,15 +5,7 @@
   "main": "index.js",
   "homepage": "https://github.com/jbussdieker/generator-jb-node-express#readme",
   "files": [
-    "helper.js",
-    "app",
-    "controller",
-    "migration",
-    "model",
-    "route",
-    "scaffold",
-    "seed",
-    "boilerplate"
+    "generators"
   ],
   "scripts": {
     "test": "jest --coverage",
@@ -68,15 +60,15 @@
     "eslint-config-prettier": "^4.2.0",
     "eslint-config-xo-space": "^0.21.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "jest": "^24.7.1",
+    "jest": "^24.8.0",
     "prettier": "^1.17.0",
     "yeoman-assert": "^3.1.1",
     "yeoman-test": "^1.9.1"
   },
   "dependencies": {
     "change-case": "^3.1.0",
-    "generator-jb-node": "^1.0.3",
+    "generator-jb-node": "^1.2.0",
     "pluralize": "^7.0.0",
-    "yeoman-generator": "^3.2.0"
+    "yeoman-generator": "^4.0.0"
   }
 }

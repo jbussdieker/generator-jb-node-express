@@ -11,7 +11,9 @@ const testOptions = {
 describe('jbb-node-express:controller', () => {
   describe('normal', () => {
     beforeEach(() => {
-      return helpers.run(path.join(__dirname, '../controller')).withOptions(testOptions);
+      return helpers
+        .run(path.join(__dirname, '../generators/controller'))
+        .withOptions(testOptions);
     });
 
     it('creates controller', () => {
@@ -21,7 +23,7 @@ describe('jbb-node-express:controller', () => {
 
   describe('scaffold', () => {
     beforeEach(() => {
-      return helpers.run(path.join(__dirname, '../controller')).withOptions({
+      return helpers.run(path.join(__dirname, '../generators/controller')).withOptions({
         ...testOptions,
         attributes: 'name:string,body:text,user_id:integer',
         template: 'scaffold'

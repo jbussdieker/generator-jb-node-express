@@ -10,7 +10,9 @@ const testOptions = {
 describe('jbb-node-express:model', () => {
   describe('normal', () => {
     beforeEach(() => {
-      return helpers.run(path.join(__dirname, '../model')).withOptions(testOptions);
+      return helpers
+        .run(path.join(__dirname, '../generators/model'))
+        .withOptions(testOptions);
     });
 
     it('creates models dir', () => {

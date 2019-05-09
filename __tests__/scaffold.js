@@ -11,7 +11,9 @@ const testOptions = {
 describe('jbb-node-express:scaffold', () => {
   describe('normal', () => {
     beforeEach(() => {
-      return helpers.run(path.join(__dirname, '../scaffold')).withOptions(testOptions);
+      return helpers
+        .run(path.join(__dirname, '../generators/scaffold'))
+        .withOptions(testOptions);
     });
 
     it('creates all the assets', () => {

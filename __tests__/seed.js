@@ -10,7 +10,9 @@ const testOptions = {
 describe('jbb-node-express:seed', () => {
   describe('normal', () => {
     beforeEach(() => {
-      return helpers.run(path.join(__dirname, '../seed')).withOptions(testOptions);
+      return helpers
+        .run(path.join(__dirname, '../generators/seed'))
+        .withOptions(testOptions);
     });
 
     it('creates db/seeds dir', () => {

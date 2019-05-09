@@ -10,7 +10,9 @@ const testOptions = {
 describe('jbb-node-express:route', () => {
   describe('normal', () => {
     beforeEach(() => {
-      return helpers.run(path.join(__dirname, '../route')).withOptions(testOptions);
+      return helpers
+        .run(path.join(__dirname, '../generators/route'))
+        .withOptions(testOptions);
     });
 
     it('creates routes dir', () => {

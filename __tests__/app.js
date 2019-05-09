@@ -10,7 +10,9 @@ const testOptions = {
 describe('jbb-node-express:app', () => {
   describe('without existing package.json', () => {
     beforeEach(() => {
-      return helpers.run(path.join(__dirname, '../app')).withOptions(testOptions);
+      return helpers
+        .run(path.join(__dirname, '../generators/app'))
+        .withOptions(testOptions);
     });
 
     it('creates all the files', () => {
@@ -21,7 +23,7 @@ describe('jbb-node-express:app', () => {
   describe('with existing app.js', () => {
     beforeEach(() => {
       return helpers
-        .run(path.join(__dirname, '../app'))
+        .run(path.join(__dirname, '../generators/app'))
         .withOptions(testOptions)
         .on('ready', gen => {
           gen.fs.write(gen.destinationPath('app.js'), 'INVALID');
